@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link
+	href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<title>用户信息</title>
+</head>
+<body>
+<div class="container col-md-12">
+   <table class="table">
+   <thead>
+    <tr><td colspan="2">用户信息</td></tr>
+   </thead>
+   <tr><td>姓名：</td><td th:text="${hquer.firstName}+${hquer.lastName}">姓名</td></tr>
+   <tr><td>用户名：</td><td th:text="${hquer.userName}">用户名</td></tr>
+   <tr><td>E-Mail:</td><td th:text="${hquer.email}">Email</td></tr>
+   </table>
+   <a th:href="@{'/message/'+${hquer.userName}}">查看我的消息</a>
+   <a th:href="@{/hquer/login}">重新登陆</a>
+   <a th:href="@{/index}">首页</a>
+</div>
+</body>
+</html>

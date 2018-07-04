@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link
+	href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+/*web background*/
+.container {
+	display: table;
+	height: 100%;
+}
+</style>
+<title>用户注册</title>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-6 col-offset-3">
+			<h1>注册</h1>
+			<form class="form-horizontal" role="form" action="/hquer/register"
+				th:action="@{/hquer/register}" th:object="${registerForm}" method="post"
+				th:method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="firstName" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('firstName')}?'badge badge-danger'">姓：</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="firstName"
+							placeholder="请输入姓"  th:field="*{firstName}"
+							th:classappend="${#fields.hasErrors('firstName')}?'text-danger'">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="lastName" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('lastName')}?'badge badge-danger'">名：</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="lastName"
+							placeholder="请输入名"  th:field="*{lastName}"
+							th:classappend="${#fields.hasErrors('lastName')}?'text-danger'">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="pic" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('picFile')}?'badge badge-danger'">头像：</label>
+					<div class="col-md-9">
+						<input type="file" class="form-control" id="pic" th:field="*{picFile}"
+							th:classappend="${#fields.hasErrors('picFile')}?'text-danger'">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="email" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('email')}?'badge badge-danger'">E-mail：</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="email"
+							placeholder="请输入E-mail"  th:field="*{email}"
+							th:classappend="${#fields.hasErrors('email')}?'text-danger'">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="userName" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('userName')}?'badge badge-danger'">用户名：</label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="userName"
+							placeholder="请输入用户名"  th:field="*{userName}"
+							th:classappend="${#fields.hasErrors('userName')}?'text-danger'">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="password" class="col-md-3 col-form-label"
+						th:classappend="${#fields.hasErrors('password')}?'badge badge-danger'">密码：</label>
+					<div class="col-md-9">
+						<input type="password" class="form-control" id="password"
+							placeholder="请输入密码"  th:field="*{password}"
+							th:classappend="${#fields.hasErrors('password')}?'text-danger'">
+					</div>
+				</div>
+				<div class="form-group row">
+					<input class="btn btn-block" type="submit" value="注册" />
+				</div>
+			</form>
+		</div>
+		<a th:href="@{/index}">首页</a>
+	</div>
+</body>
+</html>
+
+
+

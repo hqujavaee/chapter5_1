@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link
+	href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<title>欢迎来到华萌</title>
+</head>
+<body>
+	<div sec:authorize="isAnonymous()">
+		未登录，点击 <a th:href="@{/hquer/login}">登录</a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+		<p>已登录</p>
+		<p>
+			登录名：<span sec:authentication="name"></span>
+		</p>
+		<p>
+			角色：<span sec:authentication="principal.authorities"></span>
+		</p>
+		<p>
+			Username：<span sec:authentication="principal.username"></span>
+		</p>
+		<p>
+			Password：<span sec:authentication="principal.password"></span>
+		</p>
+		<p>
+			拥有的角色： <span sec:authorize="hasRole('ROLE_ADMIN')">管理员</span> <span
+				sec:authorize="hasRole('ROLE_USER')">用户</span>
+		</p>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" class="btn btn-danger" value="登出" />
+		</form>
+	</div>
+	<a th:href="@{/hquer/register}">注册</a>
+</body>
+</html>
